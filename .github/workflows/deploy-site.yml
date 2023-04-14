@@ -1,0 +1,31 @@
+name: Build and deploy website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Build Asciidoc
+        uses: docker://asciidoctor/docker-asciidoctor
+        with:
+          args: 'asciidoctor -a stylesheet=assets/css/redhat.css -a toc -a toc-placement=left -a icons=font -a docinfodir=assets -a icon-set=fab -a docinfo=shared -a source-highlighter="highlight.js" -a icons="font" -a iconsdir="assets/images" -a favicon="assets/images/favicon.ico" -a sectlinks main.adoc -o index.html'
+
+      - name: Copy output to docs/
+        run: |
+          mkdir docs
+          cp -r assets/ docs/assets
+          mv index.html docs/
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
