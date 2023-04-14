@@ -1,0 +1,6 @@
+[.topnav]
+link:#[image:hat.svg[Home, 30] | {nav-title}]
+
+
+
+
