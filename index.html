@@ -3567,7 +3567,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-17 12:11:36 UTC
+Last updated 2023-04-17 12:26:06 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3580,7 +3580,7 @@ if (!hljs.initHighlighting.called) {
 <script>
 const nav = document.querySelector('.topnav');
 
-var currentPosition = window.scrollY;
+let currentPosition = window.scrollY;
 
 //show navbar on page load
 window.addEventListener("load", (event) => {
@@ -3588,7 +3588,7 @@ window.addEventListener("load", (event) => {
 });
 
 //show/hide navbar on scroll
-document.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
     if (window.scrollY < currentPosition) {
         //scroll up
         nav.classList.remove('show');
@@ -3601,8 +3601,7 @@ document.addEventListener('scroll', () => {
 
 //hide navbar on click event
 document.querySelectorAll('*')
-  .forEach(element => element.addEventListener('click', e => {
-    currentPosition = window.scrollY;
+  .forEach(element => element.addEventListener('click', event => {
     nav.classList.remove('show');
   }))
 </script>
