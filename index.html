@@ -961,7 +961,7 @@ b.button:after {
 
 #header>h1:first-child {
     color: #111;
-    margin-top: 2.25rem;
+    margin-top: 5.25rem;
     margin-bottom: 0
 }
 
@@ -2737,7 +2737,7 @@ h6>a.link:hover:after {
   left: 0;
   filter: drop-shadow(-3px -13px 23px #000);
   transform: translateY(-100px);
-  transition: 0.3s;
+  transition: 1s;
 }
 
 .topnav a {
@@ -3568,7 +3568,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-17 09:06:16 UTC
+Last updated 2023-04-17 11:17:21 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3581,25 +3581,30 @@ if (!hljs.initHighlighting.called) {
 <script>
 const nav = document.querySelector('.topnav');
 
-function showNav() {
-    nav.classList.add('show');
-}
-
-function hideNav() {
-    nav.classList.remove('show');
-}
-
 var currentPosition = window.scrollY;
+
+//show navbar on page load
+window.addEventListener("load", (event) => {
+    nav.classList.add('show');
+});
+
+//show/hide navbar on scroll
 document.addEventListener('scroll', () => {
     if (window.scrollY < currentPosition) {
         //scroll up
-        hideNav();
+        nav.classList.remove('show');
     } else {
         //scroll down
-        showNav();
+        nav.classList.add('show');
     }
     currentPosition = window.scrollY;
 });
+
+//hide navbar on click event
+document.querySelectorAll('*')
+  .forEach(element => element.addEventListener('click', e => {
+    nav.classList.remove('show');
+  }))
 </script>
 </body>
 </html>
