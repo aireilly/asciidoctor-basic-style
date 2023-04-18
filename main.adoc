@@ -127,31 +127,29 @@ This is another paragraph.footnote:[This is footnote text and will be displayed 
 
 == Headings
 
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text!
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
 === Second level heading
 
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text!
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+
+Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
 ==== Third level heading
 
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text!
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+
+Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 ===== Fourth level heading
 
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text! Some text!
-Some text! Some text! Some text!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a convallis metus. Quisque pretium tellus vitae erat pulvinar, vel blandit lectus dictum. Nullam sit amet magna erat. Vestibulum id rhoncus magna. Etiam eleifend dolor ut ipsum imperdiet dapibus. Morbi gravida augue augue, dignissim semper risus lacinia condimentum. Nam dictum erat nec porta pellentesque.
+
+Phasellus eros nulla, posuere vitae elementum at, imperdiet placerat mi. Proin non nulla pulvinar libero interdum aliquam. Vestibulum purus elit, placerat quis convallis ut, vulputate et ante. Praesent nec purus elit.
+
+Nullam faucibus hendrerit ex vel dictum. Fusce luctus, orci sed fringilla tempor, ipsum dui lobortis tellus, a viverra eros turpis eget justo. In quam ante, sodales interdum gravida sed, sagittis in mi. Donec ullamcorper, nunc eget consequat commodo, diam magna consectetur metus, in tristique eros nunc vel erat. Sed varius nisl ac nisl mollis elementum. Aenean id sodales dui, a suscipit augue. Sed velit felis, fringilla et condimentum nec, sodales ut justo. Vestibulum ultrices dui sodales, euismod velit id, molestie diam. Donec ac velit at nisl semper sodales. Nunc non iaculis nibh.
 
 ====== Fifth level heading
 
@@ -251,18 +249,6 @@ Cloud Providers::
 Content in an example block is subject to normal substitutions.
 ====
 
-.Sidebar title
-****
-Sidebars contain aside text and are subject to normal substitutions.
-****
-
-[#id-for-listing-block]
-.Listing block title
-----
-Content in a listing block is subject to verbatim substitutions.
-Listing block content is commonly used to preserve code input.
-----
-
 == Tables
 
 .A simple table with a title
@@ -276,21 +262,6 @@ Listing block content is commonly used to preserve code input.
 |Column 2, row 2
 |===
 
-====
-.A table containing another nested table
-[cols=".^,<.^a,>.^a"]
-|===
-| \[X_nY_m\]
-| * \(X\) a ante \(i\)
-* \(Y\) a ante \(j\)
-| [cols=">.^"]
-!===
-! Trad. ! Stock. ! Esteq.
-!===
-|===
-====
-
-
 == Quotes
 
 [quote, firstname lastname, movie title]
@@ -298,15 +269,6 @@ ____
 This is a block quote or a prose excerpt.
 This is subject to normal substitutions.
 ____
-
-[verse, firstname lastname, poem title and more]
-____
-This is a verse block.
-  Indents and endlines are preserved in verse blocks.
-____
-
-
-
 
 // This is a comment and won't be rendered.
 
