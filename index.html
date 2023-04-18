@@ -1418,9 +1418,8 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     content: attr(data-lang);
     position: absolute;
     font-size: 0.75em;
-    top: 0.425rem;
+    bottom: 0.425rem;
     right: 0.5rem;
-    line-height: 1;
     text-transform: uppercase;
     color: inherit;
     opacity: 0.5
@@ -2721,40 +2720,58 @@ h6>a.link:hover:after {
     }
 
     #toc.toc2 #toctitle::before {
-        display:none;
+        display: none;
     }
 
     #toc.toc2 #toctitle {
-        display:none;
+        display: none;
     }
 
 }
 
 /*Top navigation*/
 .navbar {
-  background-color: #333;
-  overflow: hidden;
-  padding: 1em;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  color: #fff !important;
-  font-weight: bold;
-  text-transform: uppercase;
-  height: 60px;
-  z-index: 9999999;
-  left: 0;
-  filter: drop-shadow(-3px -13px 23px #000);
-  transform: translateY(-100px);
-  transition: 0.4s;
+    background-color: #333;
+    overflow: hidden;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: #fff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 60px;
+    z-index: 9999999;
+    left: 0;
+    filter: drop-shadow(-3px -13px 23px #000);
+    transform: translateY(-100px);
+    transition: 0.4s;
 }
 
 .navbar a {
     color: #fff !important;
-  }
+}
 
 .show {
-  transform: translateY(0);
+    transform: translateY(0);
+}
+
+/*Copy code*/
+div.listingblock>div>pre>button {
+    border: 0;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 6px;
+    position: absolute;
+    top: 0.425rem;
+    right: 0.5rem;
+    background: #dedede;
+    color: inherit;
+    opacity: 0.5;
+    border-radius: 4px;
+}
+
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -3567,7 +3584,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-18 16:19:46 UTC
+Last updated 2023-04-18 20:41:02 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3577,7 +3594,7 @@ if (!hljs.initHighlighting.called) {
   ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
 }
 </script>
-<script>
+<script type="text/javascript">
 const navbar = document.querySelector('.navbar');
 
 let currentPosition = window.scrollY;
@@ -3601,10 +3618,45 @@ window.addEventListener('scroll', () => {
 
 //hide navbar on click event
 document.querySelectorAll('*')
-  .forEach(element => element.addEventListener('click', event => {
-    currentPosition = window.scrollY;
-    navbar.classList.remove('show');
-  }))
+    .forEach(element => element.addEventListener('click', event => {
+        currentPosition = window.scrollY;
+        navbar.classList.remove('show');
+    }))
+</script>
+
+<script type="text/javascript">
+const copyButtonLabel = "Copy";
+
+// use a class selector if available
+let blocks = document.querySelectorAll("pre");
+
+blocks.forEach((block) => {
+    // only add button if browser supports Clipboard API
+    if (navigator.clipboard) {
+        let button = document.createElement("button");
+
+        button.innerText = copyButtonLabel;
+        block.appendChild(button);
+
+        button.addEventListener("click", async () => {
+            await copyCode(block, button);
+        });
+    }
+});
+
+async function copyCode(block, button) {
+    let code = block.querySelector("code");
+    let text = code.innerText;
+
+    await navigator.clipboard.writeText(text);
+
+    // visual feedback that task is completed
+    button.innerText = "Copied!";
+
+    setTimeout(() => {
+        button.innerText = copyButtonLabel;
+    }, 1500);
+}
 </script>
 </body>
 </html>

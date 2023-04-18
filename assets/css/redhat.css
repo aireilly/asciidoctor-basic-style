@@ -1407,9 +1407,8 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     content: attr(data-lang);
     position: absolute;
     font-size: 0.75em;
-    top: 0.425rem;
+    bottom: 0.425rem;
     right: 0.5rem;
-    line-height: 1;
     text-transform: uppercase;
     color: inherit;
     opacity: 0.5
@@ -2710,38 +2709,56 @@ h6>a.link:hover:after {
     }
 
     #toc.toc2 #toctitle::before {
-        display:none;
+        display: none;
     }
 
     #toc.toc2 #toctitle {
-        display:none;
+        display: none;
     }
 
 }
 
 /*Top navigation*/
 .navbar {
-  background-color: #333;
-  overflow: hidden;
-  padding: 1em;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  color: #fff !important;
-  font-weight: bold;
-  text-transform: uppercase;
-  height: 60px;
-  z-index: 9999999;
-  left: 0;
-  filter: drop-shadow(-3px -13px 23px #000);
-  transform: translateY(-100px);
-  transition: 0.4s;
+    background-color: #333;
+    overflow: hidden;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: #fff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 60px;
+    z-index: 9999999;
+    left: 0;
+    filter: drop-shadow(-3px -13px 23px #000);
+    transform: translateY(-100px);
+    transition: 0.4s;
 }
 
 .navbar a {
     color: #fff !important;
-  }
+}
 
 .show {
-  transform: translateY(0);
+    transform: translateY(0);
+}
+
+/*Copy code*/
+div.listingblock>div>pre>button {
+    border: 0;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 6px;
+    position: absolute;
+    top: 0.425rem;
+    right: 0.5rem;
+    background: #dedede;
+    color: inherit;
+    opacity: 0.5;
+    border-radius: 4px;
+}
+
 }
