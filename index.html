@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Firstname Lastname">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<title>AsciiDoc Article Title</title>
+<title>AsciiDoc Document Title</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
@@ -367,7 +367,7 @@ table.tableblock>.title,
 .qlist>.title,
 .hdlist>.title {
     line-height: 1.4;
-    color: #6c818f;
+    color: #222;
     font-weight: 300;
     margin-top: 0.2em;
     margin-bottom: 0.5em
@@ -2763,7 +2763,7 @@ h6>a.link:hover:after {
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>AsciiDoc Article Title</h1>
+<h1>AsciiDoc Document Title</h1>
 <div class="details">
 <span id="author" class="author">Firstname Lastname</span><br>
 <span id="email" class="email"><a href="mailto:author@asciidoctor.org">author@asciidoctor.org</a></span><br>
@@ -2771,7 +2771,7 @@ h6>a.link:hover:after {
 <span id="revdate">July 29, 2022, Asciidoctor article template</span>
 </div>
 <div id="toc" class="toc2">
-<div id="toctitle">Red Hat example document v1.5</div>
+<div id="toctitle">AsciiDoc Document Title</div>
 <ul class="sectlevel1">
 <li><a href="#_code_blocks">Code blocks</a></li>
 <li><a href="#_admonitions">Admonitions</a></li>
@@ -2820,7 +2820,7 @@ h6>a.link:hover:after {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph topnav">
-<p><a href="#"><span class="image"><img src="images/hat.svg" alt="Home" width="30"></span> | Red Hat example document v1.5</a></p>
+<p><a href="#"><span class="image"><img src="images/redhat.svg" alt="Home" width="30"></span> | AsciiDoc Document Title</a></p>
 </div>
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
@@ -3065,7 +3065,7 @@ The style can be any one of the admonition labels:</p>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="images/redhat.svg" alt="This is the image alt text.">
+<img src="https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg" alt="100" width="This is the image alt text.">
 </div>
 <div class="title">Figure 1. Image caption</div>
 </div>
@@ -3578,7 +3578,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-18 08:58:12 UTC
+Last updated 2023-04-18 09:06:19 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3588,6 +3588,30 @@ if (!hljs.initHighlighting.called) {
   ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
 }
 </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <script>
 const nav = document.querySelector('.topnav');
 
