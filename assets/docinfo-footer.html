@@ -1,0 +1,29 @@
+<script>
+const navbar = document.querySelector('.navbar');
+
+let currentPosition = window.scrollY;
+
+//show navbar on page load
+window.addEventListener("load", (event) => {
+    navbar.classList.add('show');
+});
+
+//show/hide navbar on scroll
+window.addEventListener('scroll', () => {
+    if (window.scrollY < currentPosition) {
+        //scroll up
+        navbar.classList.remove('show');
+    } else {
+        //scroll down
+        navbar.classList.add('show');
+    }
+    currentPosition = window.scrollY;
+});
+
+//hide navbar on click event
+document.querySelectorAll('*')
+  .forEach(element => element.addEventListener('click', event => {
+    currentPosition = window.scrollY;
+    navbar.classList.remove('show');
+  }))
+</script>
