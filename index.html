@@ -2731,7 +2731,7 @@ h6>a.link:hover:after {
 }
 
 /*Top navigation*/
-.topnav, .repourl {
+.topnav {
   background-color: #333;
   overflow: hidden;
   padding: 1em;
@@ -2746,19 +2746,15 @@ h6>a.link:hover:after {
   left: 0;
   filter: drop-shadow(-3px -13px 23px #000);
   transform: translateY(-100px);
-  transition: 0.6s;
+  transition: 0.4s;
 }
 
-.topnav a, .repourl a {
+.topnav a {
     color: #fff !important;
   }
 
 .show {
   transform: translateY(0);
-}
-
-#preamble > div > div.paragraph.topnav.show > p > a:nth-child(2) {
-    float: right;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -2824,8 +2820,7 @@ h6>a.link:hover:after {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph topnav">
-<p><a href="#"><span class="image"><img src="images/redhat.svg" alt="Home" width="30"></span> | AsciiDoc Document Title</a>
-<a href="https://github.com/aireilly/asciidoctor-basic-style"><span class="image"><img src="images/github.svg" alt="https://github.com/aireilly/asciidoctor-basic-style" width="30"></span></a></p>
+<p><a href="#"><span class="image"><img src="images/redhat.svg" alt="Home" width="30"></span> | AsciiDoc Document Title</a></p>
 </div>
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
@@ -3583,7 +3578,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-18 09:48:15 UTC
+Last updated 2023-04-18 10:44:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
