@@ -2731,7 +2731,7 @@ h6>a.link:hover:after {
 }
 
 /*Top navigation*/
-.topnav {
+.topnav, .repourl {
   background-color: #333;
   overflow: hidden;
   padding: 1em;
@@ -2749,7 +2749,7 @@ h6>a.link:hover:after {
   transition: 0.6s;
 }
 
-.topnav a {
+.topnav a, .repourl a {
     color: #fff !important;
   }
 
@@ -2757,6 +2757,9 @@ h6>a.link:hover:after {
   transform: translateY(0);
 }
 
+#preamble > div > div.paragraph.topnav.show > p > a:nth-child(2) {
+    float: right;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
@@ -2821,7 +2824,8 @@ h6>a.link:hover:after {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph topnav">
-<p><a href="#"><span class="image"><img src="images/redhat.svg" alt="Home" width="30"></span> | {nav-title}</a></p>
+<p><a href="#"><span class="image"><img src="images/redhat.svg" alt="Home" width="30"></span> | AsciiDoc Document Title</a>
+<a href="https://github.com/aireilly/asciidoctor-basic-style"><span class="image"><img src="images/github.svg" alt="https://github.com/aireilly/asciidoctor-basic-style" width="30"></span></a></p>
 </div>
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
@@ -3016,7 +3020,7 @@ The style can be any one of the admonition labels:</p>
 <p>This is a link to the <a href="https://asciidoctor.org/docs/user-manual/" target="_blank" rel="noopener">Asciidoctor User Manual</a>.</p>
 </div>
 <div class="paragraph">
-<p>This is an attribute reference <a href="https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/" target="_blank" rel="noopener">which links this text to the Asciidoctor Quick Reference Guide</a>.</p>
+<p>This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick Reference Guide^].</p>
 </div>
 </div>
 <div class="sect2">
@@ -3579,7 +3583,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2023-04-18 09:23:36 UTC
+Last updated 2023-04-18 09:47:17 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
