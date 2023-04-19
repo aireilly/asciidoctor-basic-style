@@ -53,7 +53,6 @@ html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -3575,7 +3574,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-19 22:15:54 UTC
+Last updated 2023-04-19 22:41:56 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3648,8 +3647,14 @@ async function copyCode(block, button) {
     }, 400);
 }
 </script>
+
 <!-- Highlight active TOC item -->
 <script type="text/javascript">
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
+});
+
 function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn, false)
 }
@@ -3688,8 +3693,7 @@ ready(() => {
             section.focus()
 
             window.scroll({
-                behavior: 'smooth',
-                top: section.offsetTop + 190
+                top: section.offsetTop + 20
             })
 
             if (this.container.classList.contains('is-active')) {

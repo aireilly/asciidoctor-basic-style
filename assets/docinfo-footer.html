@@ -61,8 +61,14 @@ async function copyCode(block, button) {
     }, 400);
 }
 </script>
+
 <!-- Highlight active TOC item -->
 <script type="text/javascript">
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
+});
+
 function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn, false)
 }
@@ -101,8 +107,7 @@ ready(() => {
             section.focus()
 
             window.scroll({
-                behavior: 'smooth',
-                top: section.offsetTop + 190
+                top: section.offsetTop + 20
             })
 
             if (this.container.classList.contains('is-active')) {
