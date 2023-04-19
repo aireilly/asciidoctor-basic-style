@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Firstname Lastname">
 <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-<title>AsciiDoc Document Title</title>
+<title>Red Hat Document Title</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
@@ -52,7 +52,8 @@ script {
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -1146,7 +1147,7 @@ body.toc2 #header>h1:nth-last-child(2) {
 
 @media only screen and (min-width: 1280px) {
     body.toc2 {
-        padding-left: 20em;
+        padding-left: 10em;
         padding-right: 0
     }
 
@@ -2772,22 +2773,64 @@ div.listingblock>div>pre>button {
     border-radius: 4px;
 }
 
+/*GitHub link*/
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-left">
+<!-- Navbar -->
+<div class="paragraph navbar">
+    <p><a href="#"><span class="image"><img src="assets/images/redhat.svg" alt="Home" width="30"></span> | Red Hat Document Title</a></p>
+</div>
+
+<!-- GitHub link -->
+<a href="https://github.com/aireilly/asciidoctor-basic-style" class="github-corner" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
 <div id="header">
-<h1>AsciiDoc Document Title</h1>
+<h1>Red Hat Document Title</h1>
 <div class="details">
 <span id="author" class="author">Firstname Lastname</span><br>
-<span id="email" class="email"><a href="mailto:author@asciidoctor.org">author@asciidoctor.org</a></span><br>
-<span id="revnumber">version 1.0,</span>
-<span id="revdate">July 29, 2022, Asciidoctor article template</span>
+<span id="email" class="email"><a href="mailto:author@redhat.com">author@redhat.com</a></span><br>
+<span id="revnumber">version 1.5</span>
+<br><span id="revremark">April 2023</span>
 </div>
 <div id="toc" class="toc2">
-<div id="toctitle">AsciiDoc Document Title</div>
+<div id="toctitle">Red Hat Document Title</div>
 <ul class="sectlevel1">
 <li><a href="#_code_blocks">Code blocks</a></li>
 <li><a href="#_admonitions">Admonitions</a></li>
@@ -2834,9 +2877,6 @@ div.listingblock>div>pre>button {
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph navbar">
-<p><a href="#"><span class="image"><img src="assets/images/redhat.svg" alt="Home" width="30"></span> | AsciiDoc Document Title</a></p>
-</div>
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
 </div>
@@ -3520,8 +3560,8 @@ This is subject to normal substitutions.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0<br>
-Last updated 2023-04-18 20:47:47 UTC
+Version 1.5<br>
+Last updated 2023-04-19 09:16:34 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3531,17 +3571,18 @@ if (!hljs.initHighlighting.called) {
   ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
 }
 </script>
+<!-- Nav bar -->
 <script type="text/javascript">
 const navbar = document.querySelector('.navbar');
 
 let currentPosition = window.scrollY;
 
-//show navbar on page load
+// Show navbar on page load
 window.addEventListener("load", (event) => {
     navbar.classList.add('show');
 });
 
-//show/hide navbar on scroll
+// Show/hide navbar on scroll
 window.addEventListener('scroll', () => {
     if (window.scrollY < currentPosition) {
         //scroll up
@@ -3553,7 +3594,7 @@ window.addEventListener('scroll', () => {
     currentPosition = window.scrollY;
 });
 
-//hide navbar on click event
+// Hide navbar on click event
 document.querySelectorAll('*')
     .forEach(element => element.addEventListener('click', event => {
         currentPosition = window.scrollY;
@@ -3561,14 +3602,14 @@ document.querySelectorAll('*')
     }))
 </script>
 
+<!-- Copy code -->
 <script type="text/javascript">
 const copyButtonLabel = "Copy";
 
-// use a class selector if available
 let blocks = document.querySelectorAll("pre");
 
 blocks.forEach((block) => {
-    // only add button if browser supports Clipboard API
+    // Only add button if browser supports Clipboard API
     if (navigator.clipboard) {
         let button = document.createElement("button");
 
@@ -3587,7 +3628,6 @@ async function copyCode(block, button) {
 
     await navigator.clipboard.writeText(text);
 
-    // visual feedback that task is completed
     button.innerText = "Copied!";
 
     setTimeout(() => {
