@@ -1059,7 +1059,7 @@ body.toc2 #header>h1:nth-last-child(2) {
 
 #toc li {
     line-height: 1.3334;
-    margin-top: 0.3334em
+    margin-top: 0.01em
 }
 
 #toc a {
@@ -2805,6 +2805,12 @@ div.listingblock>div>pre>button {
     }
 }
 
+/*Active TOC item*/
+
+#toc > ul > li.active {
+    transition: all 50ms ease-in-out;
+    border-left: 2px solid black;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
@@ -3562,7 +3568,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-19 10:03:42 UTC
+Last updated 2023-04-19 17:03:32 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3635,6 +3641,28 @@ async function copyCode(block, button) {
         button.innerText = copyButtonLabel;
     }, 1500);
 }
+</script>
+<!-- Highlight Active TOC item -->
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded', () => {
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            if (entry.intersectionRatio > 0) {
+                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.add('active');
+            } else {
+                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.remove('active');
+            }
+        });
+    });
+
+    // Track all h1-6 elements that have an `id` applied
+    document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').forEach((heading) => {
+        observer.observe(heading);
+    });
+
+});
 </script>
 </body>
 </html>
