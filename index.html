@@ -2816,6 +2816,7 @@ div.listingblock>div>pre>button {
     font-weight: bold;
     color: #465158;
     background: #dedede;
+    text-decoration: none;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -3574,7 +3575,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-19 21:49:18 UTC
+Last updated 2023-04-19 22:10:23 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3614,7 +3615,6 @@ document.querySelectorAll('*')
         navbar.classList.remove('show');
     }))
 </script>
-
 <!-- Copy code -->
 <script type="text/javascript">
 const copyButtonLabel = "Copy";
@@ -3645,10 +3645,9 @@ async function copyCode(block, button) {
 
     setTimeout(() => {
         button.innerText = copyButtonLabel;
-    }, 1500);
+    }, 400);
 }
 </script>
-
 <!-- Highlight active TOC item -->
 <script type="text/javascript">
 function ready(fn) {
@@ -3687,6 +3686,12 @@ ready(() => {
 
             section.setAttribute('tabindex', -1)
             section.focus()
+
+            window.scroll({
+                behavior: 'smooth',
+                top: section.offsetTop + 190,
+                block: 'start'
+            })
 
             if (this.container.classList.contains('is-active')) {
                 this.container.classList.remove('is-active')
