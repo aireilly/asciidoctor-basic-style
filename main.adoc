@@ -1,10 +1,10 @@
-= AsciiDoc Document Title
-Firstname Lastname <author@asciidoctor.org>
-1.0, July 29, 2022, Asciidoctor article template
+= Red Hat Document Title
+Firstname Lastname <author@redhat.com>
+v1.5: April 2023
 :toc: left
 :toclevels: 5
-:toc-title: AsciiDoc Document Title
-include::assets/navbar.adoc[]
+:repo-url: https://github.com/aireilly/asciidoctor-basic-style
+:toc-title: Red Hat Document Title
 
 Content entered directly below the header but before the first section heading is called the preamble.
 
