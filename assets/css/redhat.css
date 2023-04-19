@@ -1048,7 +1048,7 @@ body.toc2 #header>h1:nth-last-child(2) {
 
 #toc li {
     line-height: 1.3334;
-    margin-top: 0.3334em
+    margin-top: 0.01em
 }
 
 #toc a {
@@ -1085,6 +1085,7 @@ body.toc2 #header>h1:nth-last-child(2) {
         border-bottom-width: 0 !important;
         z-index: 1000;
         padding: 1.25em 1em;
+        padding-left: 3px;
         height: 100%;
         overflow: auto;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.41);
@@ -1141,7 +1142,7 @@ body.toc2 #header>h1:nth-last-child(2) {
     }
 
     #toc.toc2 {
-        width: 20em
+        width: 20em;
     }
 
     #toc.toc2 #toctitle {
@@ -2792,4 +2793,11 @@ div.listingblock>div>pre>button {
     .github-corner .octo-arm {
         animation: octocat-wave 560ms ease-in-out
     }
+}
+
+/*Active TOC item*/
+
+#toc > ul > li.active {
+    transition: all 50ms ease-in-out;
+    border-left: 2px solid #2e2e2e;
 }
