@@ -2797,7 +2797,11 @@ div.listingblock>div>pre>button {
 
 /*Active TOC item*/
 
+#toc > ul > li {
+    border-left: 2px solid transparent;
+}
+
 #toc > ul > li.active {
-    transition: all 50ms ease-in-out;
+    transition: all 100ms ease-in-out;
     border-left: 2px solid #2e2e2e;
 }
