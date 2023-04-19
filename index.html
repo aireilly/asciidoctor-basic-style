@@ -2808,13 +2808,9 @@ div.listingblock>div>pre>button {
 
 /*Active TOC item*/
 
-#toc > ul > li {
-    border-left: 2px solid transparent;
-}
-
-#toc > ul > li.active {
+.is-visible, .is-active {
     transition: all 100ms ease-in-out;
-    border-left: 2px solid #2e2e2e;
+    border-right: 3px solid #2e2e2e;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -3573,7 +3569,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-19 20:33:22 UTC
+Last updated 2023-04-19 21:15:40 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3649,7 +3645,7 @@ async function copyCode(block, button) {
 </script>
 <!-- Highlight Active TOC item -->
 <script type="text/javascript">
-window.addEventListener('DOMContentLoaded', () => {
+/*window.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -3667,7 +3663,121 @@ window.addEventListener('DOMContentLoaded', () => {
         observer.observe(heading);
     });
 
+});*/
+
+function ready(fn) {
+  document.addEventListener('DOMContentLoaded', fn, false)
+}
+
+ready(() => {00
+
+  const TableOfContents = {
+    container: document.querySelector('#toc.toc2'),
+    links: null,
+    headings: null,
+    intersectionOptions: {
+      rootMargin: '0px',
+      threshold: 1
+    },
+    previousSection: null,
+    observer: null,
+
+    init() {
+      this.handleObserver = this.handleObserver.bind(this)
+
+      this.setUpObserver()
+      this.findLinksAndHeadings()
+      this.observeSections()
+
+
+      this.links.forEach(link => {
+        link.addEventListener('click', this.handleLinkClick.bind(this))
+      })
+    },
+
+
+    handleLinkClick(evt) {
+      evt.preventDefault()
+      let id = evt.target.getAttribute('href').replace('#', '')
+
+      let section = this.headings.find(heading => {
+        return heading.getAttribute('id') === id
+      })
+
+      section.setAttribute('tabindex', -1)
+      section.focus()
+
+      window.scroll({
+        behavior: motionQuery.matches ? 'instant' : 'smooth',
+        top: section.offsetTop - 15,
+        block: 'start'
+      })
+
+      if (this.container.classList.contains('is-active')) {
+        this.container.classList.remove('is-active')
+      }
+    },
+
+    handleObserver(entries, observer) {
+      entries.forEach(entry => {
+        let href = `#${entry.target.getAttribute('id')}`,
+          link = this.links.find(l => l.getAttribute('href') === href)
+
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+          link.classList.add('is-visible')
+          this.previousSection = entry.target.getAttribute('id')
+        } else {
+          link.classList.remove('is-visible')
+        }
+
+        this.highlightFirstActive()
+      })
+    },
+
+    highlightFirstActive() {
+      let firstVisibleLink = this.container.querySelector('.is-visible')
+
+      this.links.forEach(link => {
+        link.classList.remove('is-active')
+      })
+
+      if (firstVisibleLink) {
+        firstVisibleLink.classList.add('is-active')
+      }
+
+      if (!firstVisibleLink && this.previousSection) {
+        this.container.querySelector(
+          `a[href="#${this.previousSection}"]`
+        ).classList.add('is-active')
+      }
+    },
+
+    observeSections() {
+      this.headings.forEach(heading => {
+        this.observer.observe(heading)
+      })
+    },
+
+    setUpObserver() {
+      this.observer = new IntersectionObserver(
+        this.handleObserver,
+        this.intersectionOptions
+      )
+    },
+
+    findLinksAndHeadings() {
+      this.links = [...this.container.querySelectorAll('a')]
+      this.headings = this.links.map(link => {
+        let id = link.getAttribute('href')
+        return document.querySelector(id)
+      })
+    }
+  }
+
+  TableOfContents.init()
 });
+
 </script>
 </body>
 </html>
