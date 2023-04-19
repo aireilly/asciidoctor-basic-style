@@ -63,7 +63,7 @@ async function copyCode(block, button) {
 }
 </script>
 
-<!-- Highlight Active TOC item -->
+<!-- Highlight active TOC item -->
 <script type="text/javascript">
 function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn, false)
@@ -103,11 +103,6 @@ ready(() => {
             section.setAttribute('tabindex', -1)
             section.focus()
 
-            window.scroll({
-                behavior: motionQuery.matches ? 'instant' : 'smooth',
-                top: section.offsetTop - 15,
-                block: 'start'
-            })
             if (this.container.classList.contains('is-active')) {
                 this.container.classList.remove('is-active')
             }

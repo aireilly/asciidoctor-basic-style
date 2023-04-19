@@ -2807,7 +2807,6 @@ div.listingblock>div>pre>button {
 }
 
 /*Active TOC item*/
-
 .is-visible, .is-active {
     transition: all 100ms ease-in-out;
 }
@@ -3575,7 +3574,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-19 21:30:09 UTC
+Last updated 2023-04-19 21:43:56 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -3650,7 +3649,7 @@ async function copyCode(block, button) {
 }
 </script>
 
-<!-- Highlight Active TOC item -->
+<!-- Highlight active TOC item -->
 <script type="text/javascript">
 function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn, false)
@@ -3690,11 +3689,6 @@ ready(() => {
             section.setAttribute('tabindex', -1)
             section.focus()
 
-            window.scroll({
-                behavior: motionQuery.matches ? 'instant' : 'smooth',
-                top: section.offsetTop - 15,
-                block: 'start'
-            })
             if (this.container.classList.contains('is-active')) {
                 this.container.classList.remove('is-active')
             }
