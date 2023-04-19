@@ -1085,6 +1085,7 @@ body.toc2 #header>h1:nth-last-child(2) {
         border-bottom-width: 0 !important;
         z-index: 1000;
         padding: 1.25em 1em;
+        padding-left: 3px;
         height: 100%;
         overflow: auto;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.41);
@@ -1141,7 +1142,7 @@ body.toc2 #header>h1:nth-last-child(2) {
     }
 
     #toc.toc2 {
-        width: 20em
+        width: 20em;
     }
 
     #toc.toc2 #toctitle {
@@ -2798,5 +2799,5 @@ div.listingblock>div>pre>button {
 
 #toc > ul > li.active {
     transition: all 50ms ease-in-out;
-    border-left: 2px solid black;
+    border-left: 2px solid #2e2e2e;
 }
