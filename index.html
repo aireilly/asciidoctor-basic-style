@@ -400,6 +400,10 @@ td {
     direction: ltr;
 }
 
+div.title {
+    font-weight: bold !important;
+}
+
 a {
     color: #2980b9;
     text-decoration: none;
@@ -817,7 +821,8 @@ pre pre {
 }
 
 pre>code {
-    display: block
+    display: block;
+    padding-right: 25px;
 }
 
 pre.nowrap,
@@ -1415,7 +1420,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     position: relative
 }
 
-/*.listingblock code[data-lang]:before {
+.listingblock code[data-lang]:before {
     display: none;
     content: attr(data-lang);
     position: absolute;
@@ -1425,7 +1430,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     text-transform: uppercase;
     color: inherit;
     opacity: 0.5
-}*/
+}
 
 .listingblock:hover code[data-lang]:before {
     display: block
@@ -1447,9 +1452,9 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
 }
 
 .listingblock pre.highlightjs>code {
-    padding: 0.5em;
-    -webkit-border-radius: 6px;
-    border-radius: 6px
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 21px;
 }
 
 .prettyprint {
@@ -2477,7 +2482,7 @@ table.tableblock.grid-all td.tableblock {
     border-radius: 4px;
     line-height: inherit;
     border: solid #ddd7d7 1px;
-    color: #e74c3c
+    color: #000
 }
 
 .admonitionblock {
@@ -2615,7 +2620,7 @@ table.tableblock.grid-all td.tableblock {
 }
 
 .tableblock code {
-    border: none
+    border: none;
 }
 
 .literalblock>.content>pre,
@@ -2761,10 +2766,10 @@ h6>a.link:hover:after {
 /*Copy code*/
 div.listingblock>div>pre>button {
     border: 0;
-    font-size: .6em;
+    font-size: 0.6em;
+    padding: 4px;
     text-transform: uppercase;
     font-weight: 400;
-    padding: 4px;
     position: absolute;
     top: 0.425rem;
     right: 0.5rem;
@@ -2817,7 +2822,7 @@ div.listingblock>div>pre>button {
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0 />
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 </head>
 <body class="article toc2 toc-left">
 <!-- Navbar -->
@@ -2973,7 +2978,7 @@ spec:
 <div class="listingblock">
 <div class="title">Example output</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
 linuxptp-daemon-gmv2n           3/3     Running   0          1d17h   10.1.196.24   compute-0.example.com
 linuxptp-daemon-lgm55           3/3     Running   0          1d17h   10.1.196.25   compute-1.example.com
 ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61   control-plane-1.example.com</code></pre>
@@ -3044,6 +3049,11 @@ spec:
         path: "game.properties"
       - key: "user-interface.properties"
         path: "user-interface.properties"</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter="highlight.js" -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html</code></pre>
 </div>
 </div>
 </div>
@@ -4046,7 +4056,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-20 08:48:09 UTC
+Last updated 2023-04-20 10:06:48 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -4141,5 +4151,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
+<!-- highlight.js hack -->
 </body>
 </html>

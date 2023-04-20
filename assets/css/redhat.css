@@ -389,6 +389,10 @@ td {
     direction: ltr;
 }
 
+div.title {
+    font-weight: bold !important;
+}
+
 a {
     color: #2980b9;
     text-decoration: none;
@@ -806,7 +810,8 @@ pre pre {
 }
 
 pre>code {
-    display: block
+    display: block;
+    padding-right: 25px;
 }
 
 pre.nowrap,
@@ -1404,7 +1409,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     position: relative
 }
 
-/*.listingblock code[data-lang]:before {
+.listingblock code[data-lang]:before {
     display: none;
     content: attr(data-lang);
     position: absolute;
@@ -1414,7 +1419,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
     text-transform: uppercase;
     color: inherit;
     opacity: 0.5
-}*/
+}
 
 .listingblock:hover code[data-lang]:before {
     display: block
@@ -1436,9 +1441,9 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
 }
 
 .listingblock pre.highlightjs>code {
-    padding: 0.5em;
-    -webkit-border-radius: 6px;
-    border-radius: 6px
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 21px;
 }
 
 .prettyprint {
@@ -2466,7 +2471,7 @@ table.tableblock.grid-all td.tableblock {
     border-radius: 4px;
     line-height: inherit;
     border: solid #ddd7d7 1px;
-    color: #e74c3c
+    color: #000
 }
 
 .admonitionblock {
@@ -2604,7 +2609,7 @@ table.tableblock.grid-all td.tableblock {
 }
 
 .tableblock code {
-    border: none
+    border: none;
 }
 
 .literalblock>.content>pre,
@@ -2750,10 +2755,10 @@ h6>a.link:hover:after {
 /*Copy code*/
 div.listingblock>div>pre>button {
     border: 0;
-    font-size: .6em;
+    font-size: 0.6em;
+    padding: 4px;
     text-transform: uppercase;
     font-weight: 400;
-    padding: 4px;
     position: absolute;
     top: 0.425rem;
     right: 0.5rem;
