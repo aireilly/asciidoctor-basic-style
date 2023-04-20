@@ -55,13 +55,13 @@ spec:
 
 . Get the name of the `linuxptp-daemon` pod and corresponding node where the `PtpConfig` CR has been applied:
 +
-[source,shell]
+[source,terminal]
 ----
 $ oc get pods -n openshift-ptp -o wide
 ----
 +
 .Example output
-[source,shell]
+[source,terminal]
 ----
 NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
 linuxptp-daemon-gmv2n           3/3     Running   0          1d17h   10.1.196.24   compute-0.example.com
@@ -71,20 +71,20 @@ ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61
 
 . Check that the `ptp4l` process is running with the updated `chrt` FIFO priority:
 +
-[source,shell]
+[source,terminal]
 ----
 $ oc -n openshift-ptp logs linuxptp-daemon-lgm55 -c linuxptp-daemon-container|grep chrt
 ----
 +
 .Example output
-[source,shell]
+[source,terminal]
 ----
 I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m
 ----
 
 == Code blocks
 
-Some code:
+Some YAML code:
 
 [source,yaml]
 ----
@@ -128,7 +128,9 @@ spec:
         path: "user-interface.properties"
 ----
 
-[source,shell]
+An Asciidoctor command:
+
+[source,terminal]
 ----
 $ asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter="highlight.js" -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html
 ----
@@ -242,9 +244,7 @@ Some Superscript^®^ text and some subscript text: H~2~O.
 
 The text at the end of this sentence is cross referenced to <<third_level_heading,the third level heading>>
 
-This is a link to the https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual^].
-
-This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick Reference Guide^].
+This is a link to the https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual].
 
 === Replacements
 
@@ -608,15 +608,3 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 Reference the beginning.
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-== Quotes
-
-[quote, firstname lastname, movie title]
-____
-This is a block quote or a prose excerpt.
-This is subject to normal substitutions.
-____
-
-// This is a comment and won't be rendered.
-
-// Based on https://github.com/asciidoctor/asciidoctor.org/blob/master/docs/_includes/asciidoc-article-template.adoc[Asciidoctor article template] and the https://asciidoctor.org/docs/asciidoc-writers-guide/[AsaciiDoc Writer's Guide]
