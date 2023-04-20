@@ -2843,6 +2843,7 @@ div.listingblock>div>pre>button {
 <div id="toc" class="toc2">
 <div id="toctitle">Red Hat Document Title</div>
 <ul class="sectlevel1">
+<li><a href="#REPLACE_WITH_ID">Example procedure</a></li>
 <li><a href="#_code_blocks">Code blocks</a></li>
 <li><a href="#_admonitions">Admonitions</a></li>
 <li><a href="#_admonition_blocks">Admonition blocks</a></li>
@@ -2886,6 +2887,114 @@ div.listingblock>div>pre>button {
 <div class="sectionbody">
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="REPLACE_WITH_ID"><a class="link" href="#REPLACE_WITH_ID">Example procedure</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In telco or other deployment configurations that require low latency performance, PTP daemon threads run in a constrained CPU footprint alongside the rest of the infrastructure components. By default, PTP threads run with the <code>SCHED_OTHER</code> policy. Under high load, these threads might not get the scheduling latency they require for error-free operation.</p>
+</div>
+<div class="paragraph">
+<p>To mitigate against potential scheduling latency errors, you can configure the PTP Operator <code>linuxptp</code> services to allow threads to run with a <code>SCHED_FIFO</code> policy. If <code>SCHED_FIFO</code> is set for a <code>PtpConfig</code> CR, then <code>ptp4l</code> and <code>phc2sys</code> will run in the parent container under <code>chrt</code> with a priority set by the <code>ptpSchedulingPriority</code> field of the <code>PtpConfig</code> CR.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Setting <code>ptpSchedulingPolicy</code> is optional, and is only required if you are experiencing latency errors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Edit the <code>PtpConfig</code> CR profile:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc edit PtpConfig -n openshift-ptp</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change the <code>ptpSchedulingPolicy</code> and <code>ptpSchedulingPriority</code> fields:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: ptp.openshift.io/v1
+kind: PtpConfig
+metadata:
+  name: &lt;ptp_config_name&gt;
+  namespace: openshift-ptp
+...
+spec:
+  profile:
+  - name: "profile1"
+...
+    ptpSchedulingPolicy: SCHED_FIFO <i class="conum" data-value="1"></i><b>(1)</b>
+    ptpSchedulingPriority: 10 <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Scheduling policy for <code>ptp4l</code> and <code>phc2sys</code> processes. Use <code>SCHED_FIFO</code> on systems that support FIFO scheduling.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Required. Sets the integer value 1-65 used to configure FIFO priority for <code>ptp4l</code> and <code>phc2sys</code> processes.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Save and exit to apply the changes to the <code>PtpConfig</code> CR.</p>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Verification</div>
+<ol class="arabic">
+<li>
+<p>Get the name of the <code>linuxptp-daemon</code> pod and corresponding node where the <code>PtpConfig</code> CR has been applied:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc get pods -n openshift-ptp -o wide</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
+linuxptp-daemon-gmv2n           3/3     Running   0          1d17h   10.1.196.24   compute-0.example.com
+linuxptp-daemon-lgm55           3/3     Running   0          1d17h   10.1.196.25   compute-1.example.com
+ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61   control-plane-1.example.com</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check that the <code>ptp4l</code> process is running with the updated <code>chrt</code> FIFO priority:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc -n openshift-ptp logs linuxptp-daemon-lgm55 -c linuxptp-daemon-container|grep chrt</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -4066,7 +4175,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-20 08:24:23 UTC
+Last updated 2023-04-20 08:28:01 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
