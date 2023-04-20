@@ -2972,13 +2972,13 @@ spec:
 <p>Get the name of the <code>linuxptp-daemon</code> pod and corresponding node where the <code>PtpConfig</code> CR has been applied:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc get pods -n openshift-ptp -o wide</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc get pods -n openshift-ptp -o wide</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example output</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
 linuxptp-daemon-gmv2n           3/3     Running   0          1d17h   10.1.196.24   compute-0.example.com
 linuxptp-daemon-lgm55           3/3     Running   0          1d17h   10.1.196.25   compute-1.example.com
 ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61   control-plane-1.example.com</code></pre>
@@ -2989,13 +2989,13 @@ ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61
 <p>Check that the <code>ptp4l</code> process is running with the updated <code>chrt</code> FIFO priority:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc -n openshift-ptp logs linuxptp-daemon-lgm55 -c linuxptp-daemon-container|grep chrt</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc -n openshift-ptp logs linuxptp-daemon-lgm55 -c linuxptp-daemon-container|grep chrt</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example output</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m</code></pre>
 </div>
 </div>
 </li>
@@ -3053,7 +3053,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter="highlight.js" -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter="highlight.js" -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html</code></pre>
 </div>
 </div>
 </div>
@@ -4056,7 +4056,7 @@ This is subject to normal substitutions.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-20 10:07:18 UTC
+Last updated 2023-04-20 10:32:08 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
@@ -4138,9 +4138,9 @@ window.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             const id = entry.target.getAttribute('id');
             if (entry.intersectionRatio > 0) {
-                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.add('active');
+                document.querySelector(`#toc.toc2 ul.sectlevel2.sectlevel4 a, #toc.toc2 ul.sectlevel3.sectlevel4 a, #toc.toc2 ul.sectlevel4.sectlevel4 a, #toc.toc2 ul.sectlevel5.sectlevel4 a, #toc.toc2 ul.sectlevel6.sectlevel4 a[href="#${id}"]`).parentElement.classList.add('active');
             } else {
-                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.remove('active');
+                document.querySelector(`#toc.toc2 ul.sectlevel2.sectlevel4 a, #toc.toc2 ul.sectlevel3.sectlevel4 a, #toc.toc2 ul.sectlevel4.sectlevel4 a, #toc.toc2 ul.sectlevel5.sectlevel4 a, #toc.toc2 ul.sectlevel6.sectlevel4 a[href="#${id}"]`).parentElement.classList.remove('active');
             }
         });
     });
@@ -4151,7 +4151,5 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
-<!-- highlight.js hack -->
 </body>
 </html>

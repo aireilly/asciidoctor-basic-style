@@ -70,9 +70,9 @@ window.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             const id = entry.target.getAttribute('id');
             if (entry.intersectionRatio > 0) {
-                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.add('active');
+                document.querySelector(`#toc.toc2 ul.sectlevel2.sectlevel4 a, #toc.toc2 ul.sectlevel3.sectlevel4 a, #toc.toc2 ul.sectlevel4.sectlevel4 a, #toc.toc2 ul.sectlevel5.sectlevel4 a, #toc.toc2 ul.sectlevel6.sectlevel4 a[href="#${id}"]`).parentElement.classList.add('active');
             } else {
-                document.querySelector(`#toc.toc2 ul.sectlevel1 a[href="#${id}"]`).parentElement.classList.remove('active');
+                document.querySelector(`#toc.toc2 ul.sectlevel2.sectlevel4 a, #toc.toc2 ul.sectlevel3.sectlevel4 a, #toc.toc2 ul.sectlevel4.sectlevel4 a, #toc.toc2 ul.sectlevel5.sectlevel4 a, #toc.toc2 ul.sectlevel6.sectlevel4 a[href="#${id}"]`).parentElement.classList.remove('active');
             }
         });
     });
@@ -83,5 +83,3 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
-<!-- highlight.js hack -->
