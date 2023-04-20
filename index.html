@@ -1400,7 +1400,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
 
     .literalblock pre,
     .listingblock>.content>pre {
-        font-size: 1em
+        font-size: 0.90625em
     }
 }
 
@@ -2765,7 +2765,13 @@ h6>a.link:hover:after {
 }
 
 /*Copy code*/
-div.listingblock>div>pre>button {
+
+div.content>pre>button {
+    display: none;
+}
+
+div.listingblock>div>pre.highlightjs>button {
+    display: unset;
     border: 0;
     font-size: 0.6em;
     padding: 4px;
@@ -2779,6 +2785,7 @@ div.listingblock>div>pre>button {
     opacity: 0.5;
     border-radius: 4px;
 }
+
 
 /*GitHub link*/
 .github-corner:hover .octo-arm {
@@ -3267,10 +3274,7 @@ The style can be any one of the admonition labels:</p>
 <p>The text at the end of this sentence is cross referenced to <a href="#third_level_heading">the third level heading</a></p>
 </div>
 <div class="paragraph">
-<p>This is a link to the <a href="https://asciidoctor.org/docs/user-manual/" target="_blank" rel="noopener">Asciidoctor User Manual</a>.</p>
-</div>
-<div class="paragraph">
-<p>This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick Reference Guide^].</p>
+<p>This is a link to the <a href="https://asciidoctor.org/docs/user-manual/">Asciidoctor User Manual</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4041,7 +4045,7 @@ RAM
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-20 12:47:27 UTC
+Last updated 2023-04-20 16:17:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

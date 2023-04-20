@@ -1389,7 +1389,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p {
 
     .literalblock pre,
     .listingblock>.content>pre {
-        font-size: 1em
+        font-size: 0.90625em
     }
 }
 
@@ -2754,7 +2754,13 @@ h6>a.link:hover:after {
 }
 
 /*Copy code*/
-div.listingblock>div>pre>button {
+
+div.content>pre>button {
+    display: none;
+}
+
+div.listingblock>div>pre.highlightjs>button {
+    display: unset;
     border: 0;
     font-size: 0.6em;
     padding: 4px;
@@ -2768,6 +2774,7 @@ div.listingblock>div>pre>button {
     opacity: 0.5;
     border-radius: 4px;
 }
+
 
 /*GitHub link*/
 .github-corner:hover .octo-arm {
