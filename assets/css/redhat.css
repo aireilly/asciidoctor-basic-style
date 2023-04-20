@@ -2401,7 +2401,8 @@ table.tableblock.grid-all td.tableblock {
 
 #toc.toc2 ul.sectlevel1 a:hover,
 #toc.toc2 ul.sectlevel1 a:focus {
-    color: #000
+    color: #000;
+    border-right: 3px solid #8b8b8b;
 }
 
 #toc.toc2 ul.sectlevel2,
