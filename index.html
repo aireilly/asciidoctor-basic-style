@@ -2631,7 +2631,8 @@ table.tableblock.grid-all td.tableblock {
 
 .literalblock pre,
 .listingblock>.content>pre {
-    background: #f8f8f8
+    background: #f8f8f8;
+    padding: 15px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -2765,12 +2766,11 @@ h6>a.link:hover:after {
 }
 
 /*Copy code*/
-
 div.content>pre>button {
     display: none;
-}
+}*
 
-div.listingblock>div>pre.highlightjs>button {
+div.listingblock>div>pre.rouge>button {
     display: unset;
     border: 0;
     font-size: 0.6em;
@@ -4161,7 +4161,7 @@ RAM
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-21 10:19:58 UTC
+Last updated 2023-04-21 10:27:42 UTC
 </div>
 </div>
 <!-- Nav bar -->
@@ -4194,6 +4194,7 @@ document.querySelectorAll('*')
         navbar.classList.remove('show');
     }))
 </script>
+
 <!-- Copy code -->
 <script type="text/javascript">
 const copyButtonLabel = "Copy";
