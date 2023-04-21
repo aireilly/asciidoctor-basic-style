@@ -2830,9 +2830,122 @@ div.listingblock>div>pre.highlightjs>button {
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="./assets/js/jquery.min.js"></script>
 </head>
 <body class="article toc2 toc-left">
 <!-- Navbar -->
@@ -2934,7 +3047,7 @@ div.listingblock>div>pre.highlightjs>button {
 <p>Edit the <code>PtpConfig</code> CR profile:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-terminal hljs" data-lang="terminal">$ oc edit PtpConfig -n openshift-ptp</code></pre>
+<pre class="rouge highlight"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>oc edit PtpConfig <span class="nt">-n</span> openshift-ptp</code></pre>
 </div>
 </div>
 </li>
@@ -2942,18 +3055,18 @@ div.listingblock>div>pre.highlightjs>button {
 <p>Change the <code>ptpSchedulingPolicy</code> and <code>ptpSchedulingPriority</code> fields:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: ptp.openshift.io/v1
-kind: PtpConfig
-metadata:
-  name: &lt;ptp_config_name&gt;
-  namespace: openshift-ptp
-...
-spec:
-  profile:
-  - name: "profile1"
-...
-    ptpSchedulingPolicy: SCHED_FIFO <i class="conum" data-value="1"></i><b>(1)</b>
-    ptpSchedulingPriority: 10 <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">ptp.openshift.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">PtpConfig</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">&lt;ptp_config_name&gt;</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">openshift-ptp</span>
+<span class="nn">...</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">profile</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">profile1"</span>
+<span class="nn">...</span>
+    <span class="na">ptpSchedulingPolicy</span><span class="pi">:</span> <span class="s">SCHED_FIFO</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="na">ptpSchedulingPriority</span><span class="pi">:</span> <span class="s">10</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2981,16 +3094,16 @@ spec:
 <p>Get the name of the <code>linuxptp-daemon</code> pod and corresponding node where the <code>PtpConfig</code> CR has been applied:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc get pods -n openshift-ptp -o wide</code></pre>
+<pre class="rouge highlight"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>oc get pods <span class="nt">-n</span> openshift-ptp <span class="nt">-o</span> wide</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example output</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
+<pre class="rouge highlight"><code data-lang="terminal"><span class="go">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE
 linuxptp-daemon-gmv2n           3/3     Running   0          1d17h   10.1.196.24   compute-0.example.com
 linuxptp-daemon-lgm55           3/3     Running   0          1d17h   10.1.196.25   compute-1.example.com
-ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61   control-plane-1.example.com</code></pre>
+ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61   control-plane-1.example.com</span></code></pre>
 </div>
 </div>
 </li>
@@ -2998,13 +3111,13 @@ ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61
 <p>Check that the <code>ptp4l</code> process is running with the updated <code>chrt</code> FIFO priority:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc -n openshift-ptp logs linuxptp-daemon-lgm55 -c linuxptp-daemon-container|grep chrt</code></pre>
+<pre class="rouge highlight"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>oc <span class="nt">-n</span> openshift-ptp logs linuxptp-daemon-lgm55 <span class="nt">-c</span> linuxptp-daemon-container|grep chrt</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example output</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m</code></pre>
+<pre class="rouge highlight"><code data-lang="terminal"><span class="go">I1216 19:24:57.091872 1600715 daemon.go:285] /bin/chrt -f 65 /usr/sbin/ptp4l -f /var/run/ptp4l.0.config -2  --summary_interval -4 -m</span></code></pre>
 </div>
 </div>
 </li>
@@ -3016,53 +3129,56 @@ ptp-operator-3r4dcvf7f4-zndk7   1/1     Running   0          1d7h    10.129.0.61
 <h2 id="_code_blocks"><a class="link" href="#_code_blocks">Code blocks</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Some code:</p>
+<p>Some YAML code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: configmap-demo-pod
-spec:
-  containers:
-    - name: demo
-      image: alpine
-      command: ["sleep", "3600"]
-      env:
-        # Define the environment variable
-        - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
-                                     # from the key name in the ConfigMap.
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo           # The ConfigMap this value comes from.
-              key: player_initial_lives # The key to fetch.
-        - name: UI_PROPERTIES_FILE_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo
-              key: ui_properties_file_name
-      volumeMounts:
-      - name: config
-        mountPath: "/config"
-        readOnly: true
-  volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
-  - name: config
-    configMap:
-      # Provide the name of the ConfigMap you want to mount.
-      name: game-demo
-      # An array of keys from the ConfigMap to create as files
-      items:
-      - key: "game.properties"
-        path: "game.properties"
-      - key: "user-interface.properties"
-        path: "user-interface.properties"</code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">configmap-demo-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">demo</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">alpine</span>
+      <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">sleep"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">3600"</span><span class="pi">]</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="c1"># Define the environment variable</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">PLAYER_INITIAL_LIVES</span> <span class="c1"># Notice that the case is different here</span>
+                                     <span class="c1"># from the key name in the ConfigMap.</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>           <span class="c1"># The ConfigMap this value comes from.</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">player_initial_lives</span> <span class="c1"># The key to fetch.</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">UI_PROPERTIES_FILE_NAME</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">ui_properties_file_name</span>
+      <span class="na">volumeMounts</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+        <span class="na">mountPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/config"</span>
+        <span class="na">readOnly</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">volumes</span><span class="pi">:</span>
+  <span class="c1"># You set volumes at the Pod level, then mount them into containers inside that Pod</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+    <span class="na">configMap</span><span class="pi">:</span>
+      <span class="c1"># Provide the name of the ConfigMap you want to mount.</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+      <span class="c1"># An array of keys from the ConfigMap to create as files</span>
+      <span class="na">items</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>An Asciidoctor command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter="highlight.js" -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html</code></pre>
+<pre class="rouge highlight"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>asciidoctor <span class="nt">-a</span> <span class="nv">stylesheet</span><span class="o">=</span><span class="s2">"assets/css/redhat.css"</span> <span class="nt">-a</span> toc <span class="nt">-a</span> toc-placement<span class="o">=</span>left <span class="nt">-a</span> <span class="nv">icons</span><span class="o">=</span>font <span class="nt">-a</span> <span class="nv">docinfodir</span><span class="o">=</span><span class="s2">"assets"</span> <span class="nt">-a</span> <span class="nv">docinfo</span><span class="o">=</span>shared <span class="nt">-a</span> source-highlighter<span class="o">=</span><span class="s2">"highlight.js"</span> <span class="nt">-a</span> <span class="nv">favicon</span><span class="o">=</span><span class="s2">"assets/images/favicon.ico"</span> <span class="nt">-a</span> <span class="nv">iconsdir</span><span class="o">=</span><span class="s2">"assets/images"</span> <span class="nt">-a</span> icon-set<span class="o">=</span>fab <span class="nt">-a</span> <span class="nv">icons</span><span class="o">=</span><span class="s2">"font"</span> <span class="nt">-a</span> sectlinks main.adoc <span class="nt">-o</span> index.html</code></pre>
 </div>
 </div>
 </div>
@@ -3162,44 +3278,44 @@ This is a warning.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: configmap-demo-pod
-spec:
-  containers:
-    - name: demo
-      image: alpine
-      command: ["sleep", "3600"]
-      env:
-        # Define the environment variable
-        - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
-                                     # from the key name in the ConfigMap.
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo           # The ConfigMap this value comes from.
-              key: player_initial_lives # The key to fetch.
-        - name: UI_PROPERTIES_FILE_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo
-              key: ui_properties_file_name
-      volumeMounts:
-      - name: config
-        mountPath: "/config"
-        readOnly: true
-  volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
-  - name: config
-    configMap:
-      # Provide the name of the ConfigMap you want to mount.
-      name: game-demo
-      # An array of keys from the ConfigMap to create as files
-      items:
-      - key: "game.properties"
-        path: "game.properties"
-      - key: "user-interface.properties"
-        path: "user-interface.properties"</code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">configmap-demo-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">demo</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">alpine</span>
+      <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">sleep"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">3600"</span><span class="pi">]</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="c1"># Define the environment variable</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">PLAYER_INITIAL_LIVES</span> <span class="c1"># Notice that the case is different here</span>
+                                     <span class="c1"># from the key name in the ConfigMap.</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>           <span class="c1"># The ConfigMap this value comes from.</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">player_initial_lives</span> <span class="c1"># The key to fetch.</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">UI_PROPERTIES_FILE_NAME</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">ui_properties_file_name</span>
+      <span class="na">volumeMounts</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+        <span class="na">mountPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/config"</span>
+        <span class="na">readOnly</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">volumes</span><span class="pi">:</span>
+  <span class="c1"># You set volumes at the Pod level, then mount them into containers inside that Pod</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+    <span class="na">configMap</span><span class="pi">:</span>
+      <span class="c1"># Provide the name of the ConfigMap you want to mount.</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+      <span class="c1"># An array of keys from the ConfigMap to create as files</span>
+      <span class="na">items</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3361,44 +3477,44 @@ The style can be any one of the admonition labels:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: configmap-demo-pod
-spec:
-  containers:
-    - name: demo
-      image: alpine
-      command: ["sleep", "3600"]
-      env:
-        # Define the environment variable
-        - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
-                                     # from the key name in the ConfigMap.
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo           # The ConfigMap this value comes from.
-              key: player_initial_lives # The key to fetch.
-        - name: UI_PROPERTIES_FILE_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo
-              key: ui_properties_file_name
-      volumeMounts:
-      - name: config
-        mountPath: "/config"
-        readOnly: true
-  volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
-  - name: config
-    configMap:
-      # Provide the name of the ConfigMap you want to mount.
-      name: game-demo
-      # An array of keys from the ConfigMap to create as files
-      items:
-      - key: "game.properties"
-        path: "game.properties"
-      - key: "user-interface.properties"
-        path: "user-interface.properties"</code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">configmap-demo-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">demo</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">alpine</span>
+      <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">sleep"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">3600"</span><span class="pi">]</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="c1"># Define the environment variable</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">PLAYER_INITIAL_LIVES</span> <span class="c1"># Notice that the case is different here</span>
+                                     <span class="c1"># from the key name in the ConfigMap.</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>           <span class="c1"># The ConfigMap this value comes from.</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">player_initial_lives</span> <span class="c1"># The key to fetch.</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">UI_PROPERTIES_FILE_NAME</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">ui_properties_file_name</span>
+      <span class="na">volumeMounts</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+        <span class="na">mountPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/config"</span>
+        <span class="na">readOnly</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">volumes</span><span class="pi">:</span>
+  <span class="c1"># You set volumes at the Pod level, then mount them into containers inside that Pod</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+    <span class="na">configMap</span><span class="pi">:</span>
+      <span class="c1"># Provide the name of the ConfigMap you want to mount.</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+      <span class="c1"># An array of keys from the ConfigMap to create as files</span>
+      <span class="na">items</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3478,44 +3594,44 @@ The style can be any one of the admonition labels:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: configmap-demo-pod
-spec:
-  containers:
-    - name: demo
-      image: alpine
-      command: ["sleep", "3600"]
-      env:
-        # Define the environment variable
-        - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
-                                     # from the key name in the ConfigMap.
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo           # The ConfigMap this value comes from.
-              key: player_initial_lives # The key to fetch.
-        - name: UI_PROPERTIES_FILE_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: game-demo
-              key: ui_properties_file_name
-      volumeMounts:
-      - name: config
-        mountPath: "/config"
-        readOnly: true
-  volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
-  - name: config
-    configMap:
-      # Provide the name of the ConfigMap you want to mount.
-      name: game-demo
-      # An array of keys from the ConfigMap to create as files
-      items:
-      - key: "game.properties"
-        path: "game.properties"
-      - key: "user-interface.properties"
-        path: "user-interface.properties"</code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">configmap-demo-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">demo</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">alpine</span>
+      <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">sleep"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">3600"</span><span class="pi">]</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="c1"># Define the environment variable</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">PLAYER_INITIAL_LIVES</span> <span class="c1"># Notice that the case is different here</span>
+                                     <span class="c1"># from the key name in the ConfigMap.</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>           <span class="c1"># The ConfigMap this value comes from.</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">player_initial_lives</span> <span class="c1"># The key to fetch.</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">UI_PROPERTIES_FILE_NAME</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">ui_properties_file_name</span>
+      <span class="na">volumeMounts</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+        <span class="na">mountPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/config"</span>
+        <span class="na">readOnly</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">volumes</span><span class="pi">:</span>
+  <span class="c1"># You set volumes at the Pod level, then mount them into containers inside that Pod</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">config</span>
+    <span class="na">configMap</span><span class="pi">:</span>
+      <span class="c1"># Provide the name of the ConfigMap you want to mount.</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">game-demo</span>
+      <span class="c1"># An array of keys from the ConfigMap to create as files</span>
+      <span class="na">items</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">game.properties"</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">user-interface.properties"</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4045,16 +4161,9 @@ RAM
 <div id="footer">
 <div id="footer-text">
 Version 1.5<br>
-Last updated 2023-04-20 16:17:25 UTC
+Last updated 2023-04-21 10:19:58 UTC
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <!-- Nav bar -->
 <script type="text/javascript">
 const navbar = document.querySelector('.navbar');
