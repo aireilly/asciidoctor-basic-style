@@ -1,19 +1,15 @@
-FROM registry.access.redhat.com/ubi8/ruby-27
-
-ENV LANG=en_US.UTF-8
+FROM registry.access.redhat.com/ubi8/ruby-27:latest
 
 USER root
 
-RUN gem install asciidoctor && \
-    yum clean all
-
-LABEL url="https://asciidoctor.org/" \
-      summary="A basic Red Hat themed skin for Asciidoctor default output" \
-      description="Run the container image from the local docs repo, which is mounted into the container. Pass Asciidoctor commands to run the build. Generated files are owned by root." \
-      RUN="podman run -it --rm \
-          -v `pwd`:/docs:z \
-          IMAGE"
-
 WORKDIR /docs
 
-ADD /assets /docs/assets/
+RUN mkdir /assets
+COPY assets /assets
+
+COPY build.sh /build.sh
+RUN chmod +x /build.sh
+
+RUN gem install asciidoctor asciidoctor-diagram rouge
+
+ENTRYPOINT ["/bin/bash", "/build.sh"]

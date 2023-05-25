@@ -13,15 +13,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Extract assets
+        run: docker cp $(docker run --detach quay.io/redhat-docs/redhat-docs-template):/assets ./assets
+
       - name: Build Asciidoc
-        uses: docker://asciidoctor/docker-asciidoctor
+        uses: docker://quay.io/redhat-docs/redhat-docs-template
         with:
-          args: 'asciidoctor -a stylesheet="assets/css/redhat.css" -a toc -a toc-placement=left -a icons=font -a docinfodir="assets" -a docinfo=shared -a source-highlighter=rouge -a rouge-style=github -a favicon="assets/images/favicon.ico" -a iconsdir="assets/images" -a icon-set=fab -a icons="font" -a sectlinks main.adoc -o index.html'
+          args: main.adoc
 
       - name: Copy output to docs/
         run: |
           mkdir docs
           cp -r assets/ docs/assets
+          cp -r images/ docs/images
           mv index.html docs/
 
       - name: Publish to GitHub Pages
